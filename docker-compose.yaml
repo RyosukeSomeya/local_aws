@@ -1,0 +1,21 @@
+version: '3'
+services:
+  redis_cluster:
+    image: "redis:latest"
+    hostname: "redis_cluster"
+    container_name: redis_cluster
+    volumes:
+      - "./data/redis:/data"
+    ports:
+      - 7000:7000
+      - 7001:7001
+      - 7002:7002
+      - 7003:7003
+      - 7004:7004
+      - 7005:7005
+    networks:
+      local_aws:
+
+networks:
+  local_aws:
+    driver: bridge

@@ -18,3 +18,7 @@
 
 ## 構成図
 画像追加
+
+
+## USAGE
+redis-cli -h localhost -p 7000
