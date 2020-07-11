@@ -17,8 +17,10 @@
 5. PC本体に色々インストールすることないので、不必要にPC内を汚さないで済む
 
 ## 構成図
-![Untitled Diagram](https://user-images.githubusercontent.com/40926770/87226322-f38c6d80-c3cd-11ea-8163-ee373c848b8f.jpg)
-
+<img src="https://user-images.githubusercontent.com/40926770/87226322-f38c6d80-c3cd-11ea-8163-ee373c848b8f.jpg" width="100%" />
+ローカルマシンのlocalhost内に、docker-composeで環境を構築。
+RedisCluster用のコンテナとローカルAWS（localstack）用の2つのコンテナを用意。
+いずれのコンテナにも**localhost:ポート番号でアクセス可能**
 
 ## USAGE
 redis-cli -h localhost -p 7000
