@@ -26,7 +26,7 @@ services:
       - DEFAULT_REGION=ap-northeast-1
       - DATA_DIR=/tmp/localstack/data
     volumes:
-      - "./aws_data/localstack}:/tmp/localstack"
+      - "./aws_data/localstack:/tmp/localstack"
     ports:
       - "4569:4569" # DynamoDB
       - "4572:4572" # S3

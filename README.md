@@ -23,5 +23,47 @@ RedisCluster用のコンテナとローカルAWS（localstack）用の2つのコ
 
 いずれのコンテナにも**localhost:ポート番号**でアクセス可能
 
-## USAGE
+## 使い方
+1. docker-composeを起動する
+```
+cd local_aws
+# local_awsディレクトリに移動
+
+./start.sh
+# start.sh実行
+# => local awsコンテナとRedisClusterコンテナが立ち上がる
+```
+2. 確認
+```
+# Redisのノードへredis-cliで接続
 redis-cli -h localhost -p 7000
+
+# ブラウザでlocalstackのコンソールへアクセス
+http://localhost:9000/
+```
+
+3. awsサービスへのcliからの操作
+S3
+```
+# バケット作成
+aws --endpoint-url=http://localhost:4572 s3 mb s3://test-bucket
+
+# バケット確認
+aws --endpoint-url=http://localhost:4572 s3 ls
+
+# ファイルを配置
+touch sample.txt
+aws --endpoint-url=http://localhost:4572 s3 cp sample.txt s3://test-bucket/
+
+# バケット内を確認
+aws --endpoint-url=http://localhost:4572 s3 ls s3://test-bucket
+```
+DynamoDB
+```
+# テーブル作成
+aws --endpoint-url=http://localhost:4569 dynamodb create-table --table-name Sample --attribute-definitions AttributeName=Artist,AttributeType=S         AttributeName=SongTitle,AttributeType=S --key-schema AttributeName=Artist,KeyType=HASH AttributeName=SongTitle,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1
+```
+※localhost:9000でブラウザでコンソールにアクセスすると、バケットやテーブルが作成されているのを確認できる。
+
+※データの永続化はdocker-compose.ymlの環境変数DATA_DIRを設定することで可能。(現状は未設定)
+<img width="100%" alt="スクリーンショット 2020-07-11 23 50 39" src="https://user-images.githubusercontent.com/40926770/87226827-6b0fcc00-c3d1-11ea-8b39-81de4e3d1065.png">
