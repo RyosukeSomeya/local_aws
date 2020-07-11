@@ -17,7 +17,7 @@
 5. PC本体に色々インストールすることないので、不必要にPC内を汚さないで済む
 
 ## 構成図
-画像追加
+![Untitled Diagram](https://user-images.githubusercontent.com/40926770/87226322-f38c6d80-c3cd-11ea-8163-ee373c848b8f.jpg)
 
 
 ## USAGE
