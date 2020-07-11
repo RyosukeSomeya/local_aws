@@ -21,7 +21,7 @@
 ローカルマシンのlocalhost内に、docker環境を構築。
 RedisCluster用のコンテナとローカルAWS（localstack）用の2つのコンテナを用意。
 
-いずれのコンテナにも**localhost:ポート番号でアクセス可能**
+いずれのコンテナにも**localhost:ポート番号**でアクセス可能
 
 ## USAGE
 redis-cli -h localhost -p 7000
