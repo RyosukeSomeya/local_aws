@@ -18,8 +18,9 @@
 
 ## 構成図
 <img src="https://user-images.githubusercontent.com/40926770/87226322-f38c6d80-c3cd-11ea-8163-ee373c848b8f.jpg" width="100%" />
-ローカルマシンのlocalhost内に、docker-composeで環境を構築。
+ローカルマシンのlocalhost内に、docker環境を構築。
 RedisCluster用のコンテナとローカルAWS（localstack）用の2つのコンテナを用意。
+
 いずれのコンテナにも**localhost:ポート番号でアクセス可能**
 
 ## USAGE
