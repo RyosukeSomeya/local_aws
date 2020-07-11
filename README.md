@@ -24,6 +24,10 @@ RedisCluster用のコンテナとローカルAWS（localstack）用の2つのコ
 いずれのコンテナにも**localhost:ポート番号**でアクセス可能
 
 ## 使い方
+0. ソースをクローン
+```
+git clone https://github.com/RyosukeSomeya/local_aws.git
+```
 1. docker-composeを起動する
 ```
 cd local_aws
@@ -58,7 +62,7 @@ aws --endpoint-url=http://localhost:4572 s3 cp sample.txt s3://test-bucket/
 # バケット内を確認
 aws --endpoint-url=http://localhost:4572 s3 ls s3://test-bucket
 ```
-DynamoDB
+4. DynamoDBへのcliからの操作
 ```
 # テーブル作成
 aws --endpoint-url=http://localhost:4569 dynamodb create-table --table-name Sample --attribute-definitions AttributeName=Artist,AttributeType=S         AttributeName=SongTitle,AttributeType=S --key-schema AttributeName=Artist,KeyType=HASH AttributeName=SongTitle,KeyType=RANGE --provisioned-throughput ReadCapacityUnits=1,WriteCapacityUnits=1
@@ -66,4 +70,15 @@ aws --endpoint-url=http://localhost:4569 dynamodb create-table --table-name Samp
 ※localhost:9000でブラウザでコンソールにアクセスすると、バケットやテーブルが作成されているのを確認できる。
 
 ※データの永続化はdocker-compose.ymlの環境変数DATA_DIRを設定することで可能。(現状は未設定)
+
 <img width="100%" alt="スクリーンショット 2020-07-11 23 50 39" src="https://user-images.githubusercontent.com/40926770/87226827-6b0fcc00-c3d1-11ea-8b39-81de4e3d1065.png">
+
+5. docker-composeの終了
+```
+cd local_aws
+# local_awsディレクトリに移動
+
+./stop.sh
+# stop.sh実行
+# => コンテナを削除(docker-compose down)+不要なコンテナや、イメージがある場合は削除して終了
+```
